@@ -149,15 +149,15 @@
               <small>(ERP & MES)</small>
             </h2>
             <p>The most advanced information system for manufacturing companies. With a single database for all system applications.</p>
-            <div class="card-footer">
+            <div class="card-footer" id="kitaron-nav">
               <nav class="navbar">
-                <ul class="nav justify-content-center">
+                <ul class="nav justify-content-center" aria-multiselectable="true">
                   <li>
-                    <a href="#kitaron-features" data-toggle="collapse" aria-expanded="false" aria-controls="kitaron-features">
+                    <a href="#kitaron-features" data-toggle="collapse" aria-expanded="false" aria-controls="kitaron-features" data-parent="kitaron-nav">
                 Kitaron Features</a>
                   </li>
                   <li>
-                    <a href="#">Watch Video</a>
+                    <a href="#kitaron-video" data-toggle="collapse" aria-expanded="false" aria-controls="kitaron-video" data-parent="kitaron-nav">Watch Video</a>
                   </li>
                   <li>
                     <a href="#">Buy Now</a>
@@ -261,6 +261,11 @@
                   </div> <!-- card-block -->
                 </div>
               </div>
+              <div class="collapse video" id="kitaron-video">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/E6xPGftdCh8?ecver=2" allowfullscreen></iframe>
+                </div>
+              </div>
             </div> <!-- card-footer -->
           </div>
         </div>
@@ -272,15 +277,15 @@
               <small>(CNC, Machine Monitoring)</small>
             </h2>
             <p>Complete machine solution, from LIVE machine monitoring, back editing for CNC machines to CNC communication.</p>
-            <div class="card-footer">
+            <div class="card-footer" id="cimco-nav">
               <nav class="navbar">
                 <ul class="nav justify-content-center">
                   <li>
-                    <a href="#cimco-features" data-toggle="collapse" aria-expanded="false" aria-controls="cimco-features">
+                    <a href="#cimco-features" data-toggle="collapse" aria-expanded="false" aria-controls="cimco-features" data-parent="cimco-nav">
                 Cimco Features</a>
                   </li>
                   <li>
-                    <a href="#">Watch Video</a>
+                    <a href="#cimco-video" data-toggle="collapse" aria-expanded="false" aria-controls="cimco-video" data-parent="cimco-nav">Watch Video</a>
                   </li>
                   <li>
                     <a href="#">Buy Now</a>
@@ -411,6 +416,11 @@
                 </div>
 
               </div>
+              <div class="collapse video" id="cimco-video">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oRamHolf8Bo?ecver=2" allowfullscreen></iframe>
+                </div>
+              </div>
             </div> <!-- card-footer -->
           </div>
        </div>
@@ -422,15 +432,15 @@
               <small>(Business Intelligence)</small>
             </h2>
             <p>A modern cloud-based business intelligence platform for hosted & on-premises environment. Easily connect to your data sources & engines.</p>
-            <div class="card-footer">
+            <div class="card-footer" id="envision-nav">
               <nav class="navbar">
                 <ul class="nav justify-content-center">
                   <li>
-                    <a href="#envision-features" data-toggle="collapse" aria-expanded="false" aria-controls="envision-features">
+                    <a href="#envision-features" data-toggle="collapse" aria-expanded="false" aria-controls="envision-features" data-parent="envision-nav">
                 Envision Features</a>
                   </li>
                   <li>
-                    <a href="#">Watch Video</a>
+                    <a href="#envision-video" data-toggle="collapse" aria-expanded="false" aria-controls="envision-video" data-parent="envision-nav">Watch Video</a>
                   </li>
                   <li>
                     <a href="#">Buy Now</a>
@@ -587,6 +597,11 @@
                 </div>
 
               </div>
+              <div class="collapse video" id="envision-video">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gbyL8RvwPxI?ecver=2" allowfullscreen></iframe>
+                </div>
+              </div>
             </div> <!-- card-footer -->
           </div>
         </div>
@@ -598,15 +613,15 @@
               <small>(BIM & CAD)</small>
             </h2>
             <p>A complete solution to any type of building and product development requirement of all types of AEC and manufacturing segment.</p>
-            <div class="card-footer">
+            <div class="card-footer" id="archicad-nav">
               <nav class="navbar">
                 <ul class="nav justify-content-center">
                   <li>
-                    <a href="#archicad-features" data-toggle="collapse" aria-expanded="false" aria-controls="archicad-features">
+                    <a href="#archicad-features" data-toggle="collapse" aria-expanded="false" aria-controls="archicad-features" data-parent="archicad-nav">
                 Archicad Features</a>
                   </li>
                   <li>
-                    <a href="#">Watch Video</a>
+                    <a href="#archicad-video" data-toggle="collapse" aria-expanded="false" aria-controls="archicad-video" data-parent="archicad-nav">Watch Video</a>
                   </li>
                   <li>
                     <a href="#">Buy Now</a>
@@ -691,6 +706,11 @@
                   </div> <!-- card-block -->
                 </div>
 
+              </div>
+              <div class="collapse video" id="archicad-video">
+                <div class="embed-responsive embed-responsive-4by3">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/GpdzpDZae_o?ecver=2" allowfullscreen></iframe>
+                </div>
               </div>
             </div> <!-- card-footer -->
           </div>
@@ -780,6 +800,22 @@
       $('.popover-dismiss').popover({
         trigger: 'focus'
       });
+      function accordion (parentId) {
+        $('#' + parentId + ' .collapse').on('show.bs.collapse', function (e) {            
+          var all = $('#' + parentId).find('.collapse');
+          var actives = $('#' + parentId).find('.in, .collapsing');
+          all.each(function (index, element) {
+            $(element).collapse('hide');
+          })
+          actives.each(function (index, element) {                
+            $(element).collapse('show');                
+          })
+        });
+      }
+      accordion('kitaron-nav');
+      accordion('cimco-nav');
+      accordion('envision-nav');
+      accordion('archicad-nav');
     </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
